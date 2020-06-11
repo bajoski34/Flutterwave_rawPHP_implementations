@@ -1,0 +1,45 @@
+<?php
+//data required. You can check the doc for more options to add....
+$postdata = array(
+  "account_bank"=>"044",
+  "account_number"=>"0690000044",
+  "amount"=>50,
+  "seckey"=>"FLWSECK-e6db11d1f8a6208de8cb2f94e293450e-X",
+  "narration"=>"a sample transfer",
+  "currency"=>"NGN",
+  "reference"=>"mk-90-jk_PMCK34533",
+  "beneficiary_name"=>"Kwame Adew"
+
+);
+
+//making a call to the endpoint....
+$ch = curl_init();
+    
+curl_setopt($ch, CURLOPT_URL, "https://api.ravepay.co/v2/gpx/transfers/create");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata)); //Post Fields
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 200);
+curl_setopt($ch, CURLOPT_TIMEOUT, 200);
+
+
+$headers = array('Content-Type: application/json');
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+$request = curl_exec($ch);
+$result = json_decode($request, true);
+print_r($result);
+
+ if ($request) {
+     $result = json_decode($request, true);
+     echo "<pre>";
+     print_r($result);
+ }else{
+     if(curl_error($ch))
+     {
+         echo 'error:' . curl_error($ch);
+     }
+ }
+
+curl_close($ch);
