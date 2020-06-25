@@ -2,13 +2,13 @@
 //data required. You can check the doc for more options to add....
 $postdata = array(
         "tx_ref"=>uniqid().uniqid(),
-        "amount": "100",
-        "currency": "NGN",
-        "redirect_url": "https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc",
-        "payment_options":"card",
+        "amount"=>"100",
+        "currency"=>"NGN",
+        "redirect_url"=>"https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc",
+        "payment_options"=>"card",
         "meta"=> array(
-          "consumer_id": 23,
-          "consumer_mac": "92a3-912ba-1192a"
+          "consumer_id"=>23,
+          "consumer_mac"=>"92a3-912ba-1192a"
         ),
         "customer"=> array(
          "email"=>"user@gmail.com",
@@ -32,7 +32,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 200);
 curl_setopt($ch, CURLOPT_TIMEOUT, 200);
 
-$seckey = 'YOUR SECRET KEY';
+$secKey = 'FLWSECK_TEST-XXXXXXXXXXXXXXXXXXXXXXXX-X';
 $token = 'Bearer '.$secKey;
 $headers = array('Content-Type: application/json', 'Authorization:'.$token);
 
